@@ -1,0 +1,30 @@
+{
+  "name": "ok",
+  "version": "1.0.0",
+  "description": "React by Monika",
+  "keywords": [],
+  "homepage": "https://github.com/monika003T/React_Learning#readme",
+  "bugs": {
+    "url": "https://github.com/monika003T/React_Learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monika003T/React_Learning.git"
+  },
+  "license": "ISC",
+  "author": "Monika Thakur",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+}
