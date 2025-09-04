@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/client";
    
     const heading= React.createElement("h1",{id:"heading"},"HELLO WORLD FROM REACT")
     //we need a root to render its, react dom is used 
-    const root=ReactDOM.createRoot(document.getElementById('rr'))
+    const root = ReactDOM.createRoot(document.getElementById("rr"));
     //render heading
     rr.render(heading);
     console.log(heading)
