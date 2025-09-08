@@ -1,3 +1,41 @@
-#heading{
-    color:blueviolet;
+.header{
+    display: flex;
+    justify-content: space-between;
+    border:1px solid rgb(161, 220, 110);
+}
+.logoimage{
+    width: 200px;
+}
+.navitems >ul{ 
+    font-size: 24px;
+     display:flex;
+    list-style-type: none;
+    }
+.navitems>ul>li{
+    padding:10px;
+    margin:10px;
+}    
+.res_cart:hover{
+ cursor: pointer;
+ border: 1px solid rgb(6, 6, 6);
+}
+.res_cart{
+    margin: 5px;
+    width:200px;
+    height:450px;
+    padding: 5px;
+    border: 1px solid rgb(246, 241, 241)
+}
+.search{
+    padding: 10px;
+}
+.res-logo{
+    width:100%;
+}
+.restuarant_container{
+    margin :10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
 }
