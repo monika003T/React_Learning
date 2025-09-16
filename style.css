@@ -39,3 +39,8 @@
     flex-wrap: wrap;
 
 }
+.filter-btn{
+    margin:10px;
+    padding:10px;
+    cursor: pointer;
+}
