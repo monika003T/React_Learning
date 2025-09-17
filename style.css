@@ -44,3 +44,13 @@
     padding:10px;
     cursor: pointer;
 }
+
+.shimmer-container{
+    flex-wrap: wrap;
+    display: flex;
+}
+.shimmer{
+    padding: 200px;
+    margin: 300px;
+    color: gray;
+}
