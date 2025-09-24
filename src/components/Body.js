@@ -1,64 +1,72 @@
 import Rescart from "./Rescart";
 import reslist from "../utils/mockdata";
 import { useEffect, useState } from "react";
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
+import {  CDN_url } from "../utils/constants";
 
-const Body=()=>{
+const Body = () => {
+  // state variable
+  const [listofRestaurant, setListofRestaurant] = useState([]);
+  const [searchText, setserachText]= useState("")
+ 
+
+  useEffect(() => {
+    fetchData();
     
+  },[]);
 
-    // state variable
-    let [listofRestaurant, setListofRestaurant]=useState([])
-   
-    useEffect(()=>{
-        fetchData();
-    }, []);
+  const fetchData = async () => {
+    const data = await fetch({ CDN_url } +id
+    )
+    const json = await data.json();
+    console.log(json);
 
-    
+    setListofRestaurant(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+    );
+  };
 
-const fetchData = async () => {
-  const data = await fetch(
-    'https://developers.zomato.com/api/v2.1/search?lat=22.7169967&lon=75.86830739999999'
-  );
-  const json = await data.json();
-  console.log(json);
-
- const restaurants =
-      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || [];
-
-    setListofRestaurant(restaurants);
-
-    if(listofRestaurant.length===0){
-        return <Shimmer />
-    }
-};
-
-    
-    };
-    return(
+  if (listofRestaurant.length === 0 ) {
+   return <Shimmer />}
+   return(
     <div className="body">
-        <div className="filter">
-           <button className="filter-btn"
-            onClick={()=>{
-            const  filtered=listofRestaurant.filter((res)=>res?.info?.avgRating>4.5
-           );
-           setListofRestaurant(filtered)
-        }}>
-           Top Rated Restaurnt </button>
-        </div>
-        <div className="restuarant_container">
-            {
-                listofRestaurant
-                .filter((restaurant) => restaurant?.info) 
-                .map((restaurant)=>(
-                    <Rescart key={restaurant.info.id} resData={restaurant} />
-                ))
-            }
-           
+      <div className="filter">
+        <div className="Search">
+            <input type="text" className="Search-Bar" value={searchText} 
+            onChange={(e)=>{
+            setserachText(e.target.value);
+            }}/>
+            
+            <button onClick={()=>{
+                console.log(searchText)
+                // filter the restaurant by name
+               const filteredrestaurent = listofRestaurant.filter((res)=>
+                    res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+            setListofRestaurant(filteredrestaurent)
+
+            }} > Search</button>
             
         </div>
-        
-    </div>
-    );
+        <button
+          className="filter-btn"
+          onClick={() => {
+            const filtered = listofRestaurant.filter(
+              (res) => res?.info?.avgRating > 4.5
+            );
+            setListofRestaurant(filtered);
+          }}
+        >
+          Top Rated Restaurant
+        </button>
+      </div>
 
-    export default Body;
+      <div className="restuarant_container">
+        {listofRestaurant.map((restaurant) => (
+          <Rescart key={restaurant.info.id} resData={restaurant} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Body;

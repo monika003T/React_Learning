@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CDN_logo } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header=()=>{
 
     const [btnname, setbtnname]=useState("login")
+    console.log("Headeer Rendered");
+
+    useEffect(()=>{
+        console.log("useeffect called")
+    },[btnname])
     return(
         <div className="header">
         <div className="logo">
@@ -12,10 +18,10 @@ const Header=()=>{
         <div className="navitems">
             <ul>
                 <li>Profile</li>
-                <li>Home</li>
+                <li><Link to="/">Home </Link></li>
                 <li>Cart</li>
-                <li>About us</li>
-                <li>Feedback</li>
+                <li><Link to="/contact">Contact us </Link></li>
+                <li><Link to="/about">About us</Link></li>
                 <button className="login"
                     onClick={()=>{
                         btnname==="login"
